@@ -1,0 +1,64 @@
+body{
+    background-color: #26282e;
+    font-family: 'Lobster', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+   
+}
+#content{
+    width: 75%;
+    height: 100vh;
+    text-align: center;
+    line-height: 50%;
+    color: #209781;
+    margin-top: 0px;
+}
+h1{
+    font-size: 65px;
+    letter-spacing: 4px;
+}
+h6{
+    font-size: 35px;
+}
+a{
+    text-decoration: none;
+    color: #209781;
+}
+a:hover{
+color: #E9B64A;
+cursor: pointer;
+}
+#cards{
+   margin:auto;
+    width: 55%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+#cards div{
+    background-image: url("img/karta.png");
+    width: 125px;
+    height: 125px;
+    display:inline-block;
+    margin: 5px;
+    border:  5px solid #51c8b2;
+    filter: brightness(70%);
+    transition: filter .2s ease-in-out;
+}
+#head{
+    margin-bottom: 0px;
+}
+#cards div:hover{
+    cursor: pointer;
+    border: 5px solid #E9B64A;
+    filter: brightness(100%);
+    
+}
+#footer{
+    padding-top: 0px;
+}
+.tlo{
+    background-image: url("img/karta.png");
+}
