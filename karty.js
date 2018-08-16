@@ -3,7 +3,29 @@ var tablica = ["ciri.png","geralt.png","iorweth.png","jaskier.png","triss.png","
 
 
 
-//var c0 = document.getElementById('card0');
+window.onload = function mieszaj()
+{
+   var ile = 30;
+
+
+    while( ile != 0)
+    {
+       var pierwsza = Math.floor(Math.random()*12);
+       var druga = Math.floor(Math.random()*12);
+
+        var jeden = tablica[pierwsza];
+        var dwa = tablica[druga];
+
+        tablica[pierwsza] = dwa;
+        tablica[dwa] = jeden;
+
+        ile--;
+        console.log(ile);
+    }
+
+}
+
+
 
 
 
@@ -51,70 +73,81 @@ var numer_tury=0;
 var pierwsza;
 var druga;
 var pozostalo_par=6;
-var blokada = 0;
+var flaga = 0;
 
 
     function odkryj(nr)
     {
         
         
-        
-
-        if(jedna==0)
+        if(flaga==0)
         {
-            pierwsza=nr;
+                    if(jedna==0)
+                    {
+                        pierwsza=nr;
+                            
+                        var obraz = "url(img/"+tablica[nr]+")";
+                        $("#c"+nr).css("background-image",obraz);
+                        
+                        jedna = 1;
+                        console.log(jedna);
+                    }
+                    else
+                    {
+                        flaga=1;
+
+                        druga=nr;
+
+                        var obraz = "url(img/"+tablica[nr]+")";
+                        $("#c"+nr).css("background-image",obraz);
+                    
+                        numer_tury++;
+                        $("#tura").html("Turn counter:"+numer_tury);
+
+                        if(tablica[pierwsza]==tablica[druga])
+                        {
+                            setTimeout( function() {para(pierwsza,druga);}, 2000  );
+                        
+                        }
+                        else
+                        {
+                        console.log("pudło");
+                        
+                        setTimeout( function() {pudlo(pierwsza,druga);}, 2000  );
+
+                        }
+
+                        jedna = 0;
+                        console.log(jedna);
+                        
+                        
+
+                        //alert o wygranej w ifie
+                    }
+                     
+                }
+
+
                 
-            var obraz = "url(img/"+tablica[nr]+")";
-            $("#c"+nr).css("background-image",obraz);
-            
-            jedna = 1;
-            console.log(jedna);
-        }
-        else
-        {
-            druga=nr;
-
-            var obraz = "url(img/"+tablica[nr]+")";
-            $("#c"+nr).css("background-image",obraz);
         
-            numer_tury++;
-            $("#tura").html("Turn counter:"+numer_tury);
-
-            if(tablica[pierwsza]==tablica[druga])
-            {
-                setTimeout( function() {para(pierwsza,druga);}, 2000  );
-               
-            }
-            else
-            {
-            console.log("pudło");
-            
-              setTimeout( function() {pudlo(pierwsza,druga);}, 2000  );
-
-            }
-
-            jedna = 0;
-            console.log(jedna);
-            
-           
-
-            //alert o wygranej w ifie
-        }
-
     }
 
 
     function pudlo(pierwsza, druga){
 
-    console.log(pierwsza,druga);
-    
-    var obraz1 = "url(img/"+tablica[12]+")";
+        console.log(pierwsza,druga);
         
-    $("#c"+druga).css('background-image',obraz1);
-    $("#c"+pierwsza).css('background-image',obraz1); 
-        
-        
-    }
+        var obraz1 = "url(img/"+tablica[12]+")";
+            
+        $("#c"+druga).css('background-image',obraz1);
+        $("#c"+pierwsza).css('background-image',obraz1); 
+
+        flaga = 0;
+
+    }   
+
+
+
 
 
     function para(pierwsza,druga)
@@ -126,6 +159,8 @@ var blokada = 0;
 
         $("#c"+druga).css('opacity','0');
         $("#c"+pierwsza).css('opacity','0');
+
+        flaga = 0;
 
         if(pozostalo_par==0)
         {
