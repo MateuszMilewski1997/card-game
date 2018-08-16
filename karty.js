@@ -1,7 +1,7 @@
 var tablica = ["ciri.png","geralt.png","iorweth.png","jaskier.png","triss.png","yen.png","ciri.png","geralt.png","iorweth.png",
 "jaskier.png","triss.png","yen.png","karta.png"];
 
-
+var kontrolna = [1,1,1,1,1,1,1,1,1,1,1,1];
 
 window.onload = function mieszaj()
 {
@@ -13,12 +13,21 @@ window.onload = function mieszaj()
        var pierwsza = Math.floor(Math.random()*12);
        var druga = Math.floor(Math.random()*12);
 
-        var jeden = tablica[pierwsza];
-        var dwa = tablica[druga];
+        console.log("pierwsza: "+pierwsza+"druga: "+druga);
 
-        tablica[pierwsza] = dwa;
-        tablica[dwa] = jeden;
+       if(kontrolna[pierwsza] == 1 && kontrolna[druga] ==1 && pierwsza != druga)
+       {
+            var jeden = tablica[pierwsza];
+            var dwa = tablica[druga];
 
+            tablica[jeden] = dwa;
+            tablica[dwa] = jeden;
+        
+            kontrolna[pierwsza] = 0;
+            kontrolna[druga] = 0;
+        }
+        
+        
         ile--;
         console.log(ile);
     }
