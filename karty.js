@@ -96,10 +96,7 @@ var blokada = 0;
             jedna = 0;
             console.log(jedna);
             
-            if(pozostalo_par==1)
-            {
-                alert("Wygrałeś w"+numer_tury+" ruchach");
-            }
+           
 
             //alert o wygranej w ifie
         }
@@ -124,9 +121,14 @@ var blokada = 0;
     {
         console.log("para");
         pozostalo_par--;
+       
         //przyciemnoic i dezaktywowac
 
         $("#c"+druga).css('opacity','0');
         $("#c"+pierwsza).css('opacity','0');
 
+        if(pozostalo_par==0)
+        {
+            alert("Wygrałeś w"+numer_tury+" ruchach");
+        }
     }
